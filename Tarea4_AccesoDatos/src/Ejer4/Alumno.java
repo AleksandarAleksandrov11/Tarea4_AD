@@ -1,6 +1,9 @@
 package Ejer4;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * La clase Alumno representa a un alumno con atributos como NIA, nombre, apellidos, 
@@ -16,6 +19,7 @@ public class Alumno {
     private String nombre, apellidos, ciclo, curso, grupo;
     private char genero;
     private Date fNacimiento = new Date();
+    
 
     /**
      * Constructor que inicializa todos los atributos del alumno.
@@ -191,4 +195,45 @@ public class Alumno {
         this.fNacimiento = fNacimiento;
     }
 
+    
+    /**
+     * Pide los datos del alumno al usuario.
+     * 
+     *
+     */
+    public void leerAlumnos(Scanner sc, int i) throws ParseException{
+    	
+    	
+    	
+        System.out.println("Dime el nia del alumno " + i);
+        setNia(sc.nextInt());
+        
+        System.out.println("Dime el nombre del alumno " + i);
+        setNombre(sc.next());
+        
+        System.out.println("Dime los apellidos del alumno " + i);
+        setApellidos(sc.nextLine());
+        sc.nextLine();
+        
+        System.out.println("Dime el género del alumno " + i);
+        setGenero(sc.next().charAt(0));
+        sc.nextLine();
+        
+        System.out.println("Dime la fecha de nacimiento del alumno " + i);
+        String fechaFormatoTexto = sc.nextLine();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        setfNacimiento(formato.parse(fechaFormatoTexto));
+        
+        System.out.println("Dime el ciclo del alumno " + i);
+        setCiclo(sc.next());
+        
+        System.out.println("Dime el curso del alumno " + i);
+        setCurso(sc.next());
+        
+        System.out.println("Dime el grupo del alumno " + i);
+        setGrupo(sc.next());
+        
+    	
+    }
+    
 }
